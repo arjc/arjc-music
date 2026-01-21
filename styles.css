@@ -16,3 +16,65 @@
     transform: rotate(360deg);
   }
 }
+
+/* Squared range input styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #1a1a1a;
+  outline: none;
+}
+
+/* Track - squared */
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #1a1a1a;
+  height: 6px;
+}
+
+input[type="range"]::-moz-range-track {
+  background: #1a1a1a;
+  height: 6px;
+  border: none;
+}
+
+/* Thumb - squared handle */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 6px;
+  background: #666666;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 6px;
+  background: #666666;
+  cursor: pointer;
+  border-radius: 0;
+  border: none;
+}
+
+/* Progress fill color */
+input[type="range"]::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, #666666 0%, #666666 var(--value, 0%), #1a1a1a var(--value, 0%), #1a1a1a 100%);
+}
+
+input[type="range"]::-moz-range-track {
+  background: linear-gradient(to right, #666666 0%, #666666 var(--value, 0%), #1a1a1a var(--value, 0%), #1a1a1a 100%);
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  background: #808080;
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+  background: #808080;
+}input[type="range"]:hover::-moz-range-thumb {
+  background: #808080;
+}
+

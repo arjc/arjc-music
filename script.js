@@ -132,7 +132,9 @@ function updateProgressBar() {
 
   // Update on time change
   audio.addEventListener("timeupdate", () => {
-    progressBar.value = (audio.currentTime / audio.duration) * 1000;
+    const progress = (audio.currentTime / audio.duration) * 1000;
+    progressBar.value = progress;
+    progressBar.style.setProperty("--value", (progress / 1000 * 100) + "%");
     currentTimeEl.textContent = formatTime(audio.currentTime);
   });
 
@@ -145,6 +147,7 @@ function updateProgressBar() {
   progressBar.addEventListener("input", (e) => {
     const newTime = (e.target.value / 1000) * audio.duration;
     audio.currentTime = newTime;
+    e.target.style.setProperty("--value", (e.target.value / 1000 * 100) + "%");
   });
 
   // Auto play next song when current ends
