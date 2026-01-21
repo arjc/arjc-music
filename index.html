@@ -34,19 +34,22 @@
         <!-- RHS -->
         <div class="hidden md:flex flex-row items-center justify-center gap-4">
           <span>volume</span>
-          <input type="range" name="volume" id="volume" />
+          <input type="range" name="volume" id="volume"/>
         </div>
       </div>
     </div>
 
     <!-- Sambhavam -->
     <div
-      class="w-screen h-[77vh] flex justify-center items-center text-white text-4xl font-bold hero-container"
+      class="w-screen h-[77vh] flex justify-center items-center text-white text-4xl font-bold hero-container overflow-y-auto"
     >
       <!-- library -->
-      <div></div>
-      <!-- music info -->
-      <div></div>
+      <div class="w-full max-w-6xl px-4">
+        <h2 class="text-3xl font-bold mb-6">Library</h2>
+        <div id="songList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Songs will be populated here by JS -->
+        </div>
+      </div>
     </div>
 
     <!-- bottom bar -->
@@ -61,14 +64,14 @@
           class="h-16 w-16 rounded-md mr-4"
         />
         <div class="flex flex-col">
-          <span id="songName">Pant has python</span>
-          <span class="opacity-80 text-xs" id="artistName">Thangan chettan</span>
+          <span id="songName"></span>
+          <span class="opacity-80 text-xs" id="artistName"></span>
         </div>
       </div>
       <!-- ctrl -->
       <div class="flex items-center gap-5 md:gap-10 justify-center">
         <button onclick="prev()" class="text-3xl hover:opacity-70 cursor-pointer">❮</button>
-        <button onclick="play()" class="border-2 rounded-full w-10 h-10 hover:opacity-70 cursor-pointer">&#10074;&#10074;</button>
+        <button onclick="play()" class="border-2 rounded-full w-10 h-10 hover:opacity-70 cursor-pointer flex items-center justify-center">&gt;ton>
         <button onclick="next()" class="text-3xl hover:opacity-70 cursor-pointer">❯</button>
       </div>
       <div class="hidden sm:block">
@@ -81,7 +84,7 @@
       max="1000"
       class="w-screen absolute bottom-0 range pr-6 accent-gray-900 bg-black"
       id="progressBar"
-      value="586"
+      value="0"
     />
     <script src="script.js"></script>
   </body>
