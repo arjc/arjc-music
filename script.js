@@ -9,10 +9,10 @@ const songs = [
   },
   {
     id: 2,
-    name: "What is love? (FL studio remake)",
+    name: "Superman (FL studio remake)",
     artist: "Arjun Liji",
-    url: "music/whatislove/audio.mp3",
-    cover: "music/whatislove/cover.png",
+    url: "music/superman/audio.mp3",
+    cover: "music/superman/cover.png",
   },
 ];
 
