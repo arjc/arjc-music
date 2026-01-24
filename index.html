@@ -12,7 +12,7 @@
     class="font-sans bg-black text-white min-h-screen flex flex-col custom-bg"
   >
     <!-- Top bar -->
-    <div class="md:px-16 flex justify-center md:justify-between items-center md:gap-0 bg-black py-2 shadow-md shadow-black w-full">
+    <div class="md:px-16 h-[10vh] flex justify-center md:justify-between items-center md:gap-0 bg-black py-2 shadow-md shadow-black w-full">
         <!-- LHS -->
         <div class="flex flex-row gap-2">
           <a
@@ -37,40 +37,92 @@
 
     <!-- Sambhavam -->
     <div
-      class="w-screen h-[77vh] flex justify-center items-center text-white text-4xl font-bold hero-container overflow-y-auto"
+      class="w-screen h-[80vh] flex justify-between text-white text-4xl font-bold hero-container overflow-y-hidden gap-4"
     >
-      <!-- library -->
-      <div class="w-full max-w-6xl px-4">
-        <h2 class="text-3xl font-bold mb-6">Library (work in progress)</h2>
+    <!-- library -->
+    <div class="w-full max-w-6xl px-4 overflow-y-scroll h-full items-start pt-6">
+      <h2 class="text-3xl font-bold mb-6">FL studio recomposes</h2>
         <div id="songList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <!-- Songs will be populated here by JS -->
+          <!-- Songs go here -->
+        </div>
+      </div>
+      <!-- Track Info Panel - Hidden on mobile/tablet, visible on lg screens -->
+      <div class="track-info-panel hidden lg:flex">
+        <div class="track-info-content">
+          <div class="track-info-header">
+            <h3 class="text-lg font-bold">Now Playing</h3>
+          </div>
+          <div class="track-info-body">
+            <img id="trackCoverLarge" src="assets/cover/test.png" alt="cover" class="track-cover-large" />
+            <div class="track-details">
+              <h2 id="trackNameLarge" class="track-name">Loading Track...</h2>
+              <p id="trackArtistLarge" class="track-artist">Loading Artist...</p>
+            </div>
+            <div class="track-additional-info">
+              <div class="info-item">
+                <span class="info-label">Duration</span>
+                <span id="trackDuration" class="info-value">0:00</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Status</span>
+                <span id="trackStatus" class="info-value">Idle</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Release Date</span>
+                <span id="trackDate" class="info-value">N/A</span>
+              </div>
+            </div>
+            <div class="track-description-section">
+              <h4 class="description-title">About This Track</h4>
+              <p id="trackDescription" class="description-text">No description yet...</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- bottom bar -->
     <div
-      class="absolute left-0 bottom-0 bg-black w-screen flex items-center justify-between pt-4 pb-6 py-2 px-5 gap-4"
+      class="absolute h-[10vh] shadow-2xl shadow-black left-0 bottom-0 bg-black w-screen flex items-center justify-between pt-4 pb-6 py-2 px-5 gap-4"
     >
       <!-- info -->
-      <div class="flex items-center">
+      <div class="song-info-container">
         <img
           src="assets/cover/test.png"
           alt="cover"
-          class="h-16 w-16 rounded-md mr-4"
+          class="h-16 w-16 rounded-md shrink-0"
+          id="bottomImg"
         />
-        <div class="flex flex-col">
-          <span id="songName"></span>
-          <span class="opacity-80 text-xs" id="artistName"></span>
+        <div class="song-text-wrapper">
+          <div class="song-text-content" id="songTextContent">
+            <span id="songName"></span>
+            <span class="opacity-80 text-xs" id="artistName"></span>
+          </div>
         </div>
       </div>
       <!-- ctrl -->
-      <div class="flex items-center gap-5 md:gap-10 justify-center">
-        <button onclick="prev()" class="text-3xl hover:opacity-70 cursor-pointer">❮</button>
-        <button onclick="play()" class="border-2 rounded-full w-10 h-10 hover:opacity-70 cursor-pointer flex items-center justify-center">&gt;ton>
-        <button onclick="next()" class="text-3xl hover:opacity-70 cursor-pointer">❯</button>
+      <div class="flex items-center gap-5 md:gap-10 justify-center shrink-0">
+        <button onclick="prev()" class="control-btn hover:opacity-70 cursor-pointer" aria-label="Previous">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+          </svg>
+        </button>
+        <button id="mainPlayBtn" onclick="play()" class="play-pause-btn border-2 rounded-full w-12 h-12 hover:opacity-70 cursor-pointer flex items-center justify-center" aria-label="Play">
+          <svg class="play-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <svg class="pause-icon hidden" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
+        </button>
+        <button onclick="next()" class="control-btn hover:opacity-70 cursor-pointer" aria-label="Next">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+          </svg>
+        </button>
       </div>
-      <div class="hidden sm:block">
+      <!-- playback time -->
+      <div class="playback-time-container hidden sm:block">
         <span id="currentTime">0:00</span> / <span id="totalTime">0:00</span>
       </div>
     </div>

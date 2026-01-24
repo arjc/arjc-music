@@ -8,6 +8,55 @@
     overflow: hidden;
 }
 
+/* Spotify-like scrollbar */
+.custom-bg::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-bg::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-bg::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.custom-bg::-webkit-scrollbar-thumb:hover {
+  background: #535353;
+}
+
+/* Firefox scrollbar */
+.custom-bg {
+  scrollbar-width: thin;
+  scrollbar-color: #404040 transparent;
+}
+
+.hero-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.hero-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.hero-container::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.hero-container::-webkit-scrollbar-thumb:hover {
+  background: #535353;
+}
+
+/* Firefox scrollbar for hero-container */
+.hero-container {
+  scrollbar-width: thin;
+  scrollbar-color: #404040 transparent;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -74,7 +123,663 @@ input[type="range"]:hover::-webkit-slider-thumb {
 
 input[type="range"]:hover::-moz-range-thumb {
   background: #808080;
-}input[type="range"]:hover::-moz-range-thumb {
-  background: #808080;
 }
 
+/* Song info marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.song-info-container {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.song-text-wrapper {
+  width: 250px;
+  overflow: hidden;
+}
+
+.song-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.song-text-content.scrolling span:nth-child(1) {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 12s ease-in-out infinite;
+}
+
+.song-text-content.scrolling span:hover {
+  animation-play-state: paused;
+}
+
+.playback-time-container {
+  flex: 1;
+  text-align: right;
+  min-width: 120px;
+}
+
+/* Spotify-like library cards */
+.song-card {
+  position: relative;
+  background: #282828;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.song-card:hover {
+  background: #333333;
+  transform: translateY(-4px);
+}
+
+.song-card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #1a1a1a;
+}
+
+.song-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.song-card:hover .song-card-image img {
+  transform: scale(1.05);
+}
+
+.song-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 12px;
+  transition: background 0.3s ease;
+}
+
+.song-card:hover .song-card-overlay {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.song-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.song-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.song-card-artist {
+  font-size: 12px;
+  color: #b3b3b3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.on-track-indicator {
+  background: #1db954;
+  color: black;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-top: 4px;
+  display: inline-block;
+  width: fit-content;
+}
+
+/* Spotify-like Track Info Panel */
+.track-info-panel {
+  width: 320px;
+  height: 100%;
+  background: #121212;
+  border-left: 1px solid #282828;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.track-info-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.track-info-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.track-info-panel::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 4px;
+}
+
+.track-info-panel::-webkit-scrollbar-thumb:hover {
+  background: #535353;
+}
+
+.track-info-panel {
+  scrollbar-width: thin;
+  scrollbar-color: #404040 transparent;
+}
+
+.track-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.track-info-header {
+  border-bottom: 1px solid #282828;
+  padding-bottom: 16px;
+}
+
+.track-info-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.track-info-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.track-cover-large {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.track-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.track-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  word-break: break-word;
+}
+
+.track-artist {
+  font-size: 14px;
+  color: #b3b3b3;
+  margin: 0;
+  word-break: break-word;
+}
+
+.track-additional-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-top: 1px solid #282828;
+  padding-top: 16px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info-label {
+  font-size: 12px;
+  color: #b3b3b3;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.info-value {
+  font-size: 16px;
+  color: white;
+  font-weight: 600;
+}
+
+/* Track Description Section */
+.track-description-section {
+  border-top: 1px solid #282828;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.description-title {
+  font-size: 14px;
+  color: #b3b3b3;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.description-text {
+  font-size: 14px;
+  color: #b3b3b3;
+  line-height: 1.5;
+  margin: 0;
+  word-break: break-word;
+}
+
+.mobile-player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.mobile-header-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #b3b3b3;
+}
+
+.mobile-player-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 24px;
+  overflow-y: auto;
+}
+
+.mobile-cover {
+  width: 280px;
+  height: 280px;
+  max-width: 80vw;
+  max-height: 40vh;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-track-info {
+  text-align: center;
+  max-width: 100%;
+  padding: 0 20px;
+}
+
+.mobile-track-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 8px 0;
+  word-break: break-word;
+}
+
+.mobile-track-artist {
+  font-size: 16px;
+  color: #b3b3b3;
+  margin: 0;
+}
+
+.mobile-progress-container {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-time {
+  font-size: 12px;
+  color: #b3b3b3;
+  min-width: 40px;
+  text-align: center;
+}
+
+.mobile-progress-bar {
+  flex: 1;
+  height: 4px;
+}
+
+.mobile-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 20px 0;
+}
+
+/* Make bottom bar clickable on mobile */
+@media (max-width: 640px) {
+  .song-info-container {
+    cursor: pointer;
+  }
+  
+  .song-info-container:active {
+    opacity: 0.8;
+  }
+  
+  .song-text-wrapper {
+    width: 120px;
+  }
+}
+
+/* Control button styles */
+.control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 8px;
+  transition: opacity 0.2s;
+}
+
+.control-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.play-pause-btn {
+  background: transparent;
+}
+
+.play-pause-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Hidden utility class */
+.hidden {
+  display: none !important;
+}
+
+/* Mobile player improvements */
+.mobile-player {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, #282828 0%, #121212 100%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.mobile-player.open {
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.mobile-close-btn {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-close-btn:hover,
+.mobile-close-btn:active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-control-btn {
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-control-btn:hover,
+.mobile-control-btn:active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-control-btn.active {
+  color: #1db954;
+}
+
+.mobile-control-btn.active svg {
+  fill: #1db954;
+}
+
+.mobile-play-btn {
+  width: 64px;
+  height: 64px;
+  background: white;
+  border: none;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-play-btn svg {
+  fill: black;
+}
+
+.mobile-play-btn:hover {
+  transform: scale(1.05);
+}
+
+.mobile-play-btn:active {
+  transform: scale(0.95);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mobile-cover {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .mobile-track-name {
+    font-size: 20px;
+  }
+  
+  .mobile-track-artist {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-cover {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .mobile-controls {
+    gap: 16px;
+  }
+  
+  .mobile-control-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .mobile-play-btn {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* Play button in song cards */
+.play-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #1db954;
+  border: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.play-button svg {
+  fill: black;
+}
+
+.song-card:hover .play-button {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.play-button:hover {
+  background: #1ed760;
+  transform: scale(1.1);
+}
+
+/* Mobile player additional info styles */
+.mobile-additional-info {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.mobile-info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.mobile-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-info-label {
+  font-size: 11px;
+  color: #b3b3b3;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.mobile-info-value {
+  font-size: 14px;
+  color: white;
+  font-weight: 600;
+}
+
+.mobile-description-section {
+  width: 100%;
+  max-width: 350px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-description-title {
+  font-size: 12px;
+  color: #b3b3b3;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.mobile-description-text {
+  font-size: 13px;
+  color: #b3b3b3;
+  line-height: 1.5;
+  margin: 0;
+  word-break: break-word;
+  max-height: 120px;
+  overflow-y: auto;
+}
