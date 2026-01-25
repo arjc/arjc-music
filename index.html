@@ -8,132 +8,142 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
   </head>
-  <body
-    class="font-sans bg-black text-white min-h-screen flex flex-col custom-bg"
-  >
-    <!-- Top bar -->
-    <div class="md:px-16 h-[10vh] flex justify-center md:justify-between items-center md:gap-0 bg-black py-2 shadow-md shadow-black w-full">
-        <!-- LHS -->
-        <div class="flex flex-row gap-2">
-          <a
-            href="/"
-            class="flex items-center gap-2 no-underline cursor-default"
-          >
-            <img
-              src="assets/face.webp"
-              onclick="window.open('https://arjc.me')"
-              alt="achu"
-              class="h-12 align-middle rounded-full cursor-pointer"
-            />
-            <span class="text-white text-2xl font-semibold">Chords</span>
-          </a>
-        </div>
-        <!-- RHS -->
-        <div class="hidden md:flex flex-row items-center justify-center gap-4">
-          <span>volume</span>
-          <input type="range" name="volume" id="volume"/>
-        </div>
-    </div>
-
-    <!-- Sambhavam -->
-    <div
-      class="w-screen h-[80vh] flex justify-between text-white text-4xl font-bold hero-container overflow-y-hidden gap-4"
-    >
-    <!-- library -->
-    <div class="w-full max-w-6xl px-4 overflow-y-scroll h-full items-start pt-6">
-      <h2 class="text-3xl font-bold mb-6">FL studio recomposes</h2>
-        <div id="songList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <!-- Songs go here -->
-        </div>
-      </div>
-      <!-- Track Info Panel - Hidden on mobile/tablet, visible on lg screens -->
-      <div class="track-info-panel hidden lg:flex">
-        <div class="track-info-content">
-          <div class="track-info-header">
-            <h3 class="text-lg font-bold">Now Playing</h3>
-          </div>
-          <div class="track-info-body">
-            <img id="trackCoverLarge" src="assets/cover/test.png" alt="cover" class="track-cover-large" />
-            <div class="track-details">
-              <h2 id="trackNameLarge" class="track-name">Loading Track...</h2>
-              <p id="trackArtistLarge" class="track-artist">Loading Artist...</p>
-            </div>
-            <div class="track-additional-info">
-              <div class="info-item">
-                <span class="info-label">Duration</span>
-                <span id="trackDuration" class="info-value">0:00</span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">Status</span>
-                <span id="trackStatus" class="info-value">Idle</span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">Release Date</span>
-                <span id="trackDate" class="info-value">N/A</span>
-              </div>
-            </div>
-            <div class="track-description-section">
-              <h4 class="description-title">About This Track</h4>
-              <p id="trackDescription" class="description-text">No description yet...</p>
-            </div>
-          </div>
-        </div>
+  <body class="font-sans bg-black text-white min-h-screen flex flex-col custom-bg">
+    <!-- Header -->
+    <div class="md:px-16 h-[10vh] flex justify-center md:justify-between items-center bg-black py-2 shadow-md shadow-black">
+      <a href="/" class="flex items-center gap-2">
+        <img src="assets/face.webp" onclick="window.open('https://arjc.me')" alt="achu" class="h-12 rounded-full cursor-pointer hover:opacity-80 transition" />
+        <span class="text-2xl font-semibold">Chords</span>
+      </a>
+      <div class="hidden md:flex items-center gap-4">
+        <span class="text-sm text-gray-400">Volume</span>
+        <input type="range" id="volume" class="w-24" />
       </div>
     </div>
 
-    <!-- bottom bar -->
-    <div
-      class="absolute h-[10vh] shadow-2xl shadow-black left-0 bottom-0 bg-black w-screen flex items-center justify-between pt-4 pb-6 py-2 px-5 gap-4"
-    >
-      <!-- info -->
-      <div class="song-info-container">
-        <img
-          src="assets/cover/test.png"
-          alt="cover"
-          class="h-16 w-16 rounded-md shrink-0"
-          id="bottomImg"
-        />
-        <div class="song-text-wrapper">
-          <div class="song-text-content" id="songTextContent">
-            <span id="songName"></span>
-            <span class="opacity-80 text-xs" id="artistName"></span>
+    <!-- Main -->
+    <main class="w-screen h-[75vh] flex overflow-hidden">
+      <!-- lefty  main sec -->
+      <div class="flex-1 w-screen px-10 md:px-20 pt-10 overflow-y-auto scrollbar">
+        <h2 class="text-3xl font-bold mb-6">FL Studio Recomposes</h2>
+        <div id="songList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4"></div>
+      </div>
+      
+      <!-- Sidebar -->
+      <div class="hidden md:flex w-[20vw] bg-[#121212] border-l border-[#282828] flex-col p-6 overflow-y-auto scrollbar">
+        <div class="flex flex-col gap-6">
+          <h3 class="text-lg font-bold uppercase tracking-wide border-b border-[#282828] pb-4">Now Playing</h3>
+          <img id="coverLarge" src="assets/cover/test.png" alt="cover" class="w-full aspect-square rounded-lg object-cover shadow-lg" />
+          <div>
+            <h2 id="nameLarge" class="text-lg font-bold wrap-break-word">Loading Track...</h2>
+            <p id="artistLarge" class="text-sm text-gray-400 mt-2">Loading Artist...</p>
+          </div>
+          <div class="border-t border-[#282828] pt-4 space-y-4">
+            <div>
+              <span class="text-xs text-gray-400 uppercase font-semibold">Duration</span>
+              <p id="duration" class="text-base font-semibold mt-1">0:00</p>
+            </div>
+            <div>
+              <span class="text-xs text-gray-400 uppercase font-semibold">Status</span>
+              <p id="status" class="text-base font-semibold mt-1">Idle</p>
+            </div>
+            <div>
+              <span class="text-xs text-gray-400 uppercase font-semibold">Release Date</span>
+              <p id="date" class="text-base font-semibold mt-1">N/A</p>
+            </div>
+          </div>
+          <div class="border-t border-[#282828] pt-4">
+            <h4 class="text-xs text-gray-400 uppercase font-semibold mb-2">About This Track</h4>
+            <p id="description" class="text-sm text-gray-400 leading-relaxed">No description yet...</p>
           </div>
         </div>
       </div>
-      <!-- ctrl -->
-      <div class="flex items-center gap-5 md:gap-10 justify-center shrink-0">
-        <button onclick="prev()" class="control-btn hover:opacity-70 cursor-pointer" aria-label="Previous">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
-          </svg>
+    </main>
+
+    <!-- Bottom Bar -->
+    <div class="absolute h-[15vh] bottom-0 left-0 w-screen bg-black shadow-2xl shadow-black flex items-center justify-between p-3 sm:p-5 pb-6 gap-4">
+      <div class="flex-1 min-w-0 flex items-center gap-4 sm:cursor-default cursor-pointer active:opacity-80 sm:active:opacity-100" onclick="openMobile()">
+        <img id="cover" src="assets/cover/test.png" alt="cover" class="h-16 w-16 rounded-md shrink-0" />
+        <div class="overflow-hidden w-32 sm:w-64">
+          <p id="name" class="text-sm truncate"></p>
+          <p id="artist" class="text-xs text-gray-400 truncate"></p>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-5 md:gap-10">
+        <button onclick="prev()" class="p-2 hover:opacity-70 transition" aria-label="Previous">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
         </button>
-        <button id="mainPlayBtn" onclick="play()" class="play-pause-btn border-2 rounded-full w-12 h-12 hover:opacity-70 cursor-pointer flex items-center justify-center" aria-label="Play">
-          <svg class="play-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M8 5v14l11-7z"/>
-          </svg>
-          <svg class="pause-icon hidden" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-          </svg>
+        <button id="playBtn" onclick="play()" class="border-2 rounded-full w-12 h-12 hover:opacity-70 transition flex items-center justify-center" aria-label="Play">
+          <svg class="play-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="pause-icon hidden" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
         </button>
-        <button onclick="next()" class="control-btn hover:opacity-70 cursor-pointer" aria-label="Next">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
-          </svg>
+        <button onclick="next()" class="p-2 hover:opacity-70 transition" aria-label="Next">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
         </button>
       </div>
-      <!-- playback time -->
-      <div class="playback-time-container hidden sm:block">
-        <span id="currentTime">0:00</span> / <span id="totalTime">0:00</span>
+      
+      <div class="hidden sm:block text-right min-w-[120px] text-sm">
+        <span id="current">0:00</span> / <span id="total">0:00</span>
       </div>
     </div>
-    <input
-      type="range"
-      min="0"
-      max="1000"
-      class="w-screen absolute bottom-0 range pr-6 bg-black"
-      id="progressBar"
-      value="0"
-    />
+    
+    <input type="range" id="progress" min="0" max="1000" value="0" class="absolute bottom-0 w-screen bg-black" />
+
+    <!-- Mobile Player -->
+    <div id="mobile" class="fixed inset-0 z-50 bg-gradient-to-b from-[#282828] to-[#121212] flex flex-col translate-y-full transition-transform duration-300 invisible hidden">
+      <div class="flex justify-between items-center p-4 bg-black/20">
+        <button onclick="closeMobile()" class="w-11 h-11 flex items-center justify-center rounded-full hover:bg-white/10 active:bg-white/10 transition tap-highlight-none" aria-label="Close">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+        </button>
+        <span class="text-xs uppercase tracking-wide text-gray-400">Now Playing</span>
+        <div class="w-11"></div>
+      </div>
+      
+      <div class="flex-1 flex flex-col items-center p-5 gap-6 overflow-y-auto scrollbar">
+        <img id="mCover" src="" alt="cover" class="w-[280px] h-[280px] max-w-[80vw] max-h-[40vh] object-cover rounded-lg shadow-lg" />
+        <div class="text-center px-5">
+          <h2 id="mName" class="text-[22px] font-bold mb-2">Track Name</h2>
+          <p id="mArtist" class="text-base text-gray-400">Artist</p>
+        </div>
+        
+        <div class="w-full max-w-[350px] flex items-center gap-3">
+          <span id="mCurrent" class="text-xs text-gray-400 min-w-[40px] text-center">0:00</span>
+          <input type="range" id="mProgress" class="flex-1 h-1" min="0" max="1000" value="0" />
+          <span id="mTotal" class="text-xs text-gray-400 min-w-[40px] text-center">0:00</span>
+        </div>
+        
+        <div class="flex items-center justify-center gap-6 py-5">
+          <button id="loopBtn" onclick="toggleLoop()" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-white/10 active:bg-white/10 transition tap-highlight-none" aria-label="Loop">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          </button>
+          <button onclick="prev()" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-white/10 active:bg-white/10 transition tap-highlight-none" aria-label="Previous">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+          </button>
+          <button id="mPlayBtn" onclick="play()" class="w-16 h-16 bg-white rounded-full flex items-center justify-center active:scale-95 transition tap-highlight-none" aria-label="Play">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="black"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <button onclick="next()" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-white/10 active:bg-white/10 transition tap-highlight-none" aria-label="Next">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+          </button>
+          <div class="w-12"></div>
+        </div>
+        
+        <div class="w-full max-w-[350px] p-4 bg-white/5 rounded-lg space-y-3">
+          <div class="flex justify-between gap-4">
+            <div><span class="text-[11px] text-gray-400 uppercase font-semibold">Duration</span><p id="mDuration" class="text-sm font-semibold mt-1">0:00</p></div>
+            <div><span class="text-[11px] text-gray-400 uppercase font-semibold">Status</span><p id="mStatus" class="text-sm font-semibold mt-1">Idle</p></div>
+          </div>
+          <div><span class="text-[11px] text-gray-400 uppercase font-semibold">Release Date</span><p id="mDate" class="text-sm font-semibold mt-1">N/A</p></div>
+        </div>
+        
+        <div class="w-full max-w-[350px] p-4 bg-white/5 rounded-lg">
+          <h4 class="text-xs text-gray-400 uppercase font-semibold mb-2">About This Track</h4>
+          <p id="mDescription" class="text-[13px] text-gray-400 leading-relaxed max-h-[120px] overflow-y-auto scrollbar">No description yet...</p>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
