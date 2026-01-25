@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
   </head>
-  <body class="font-sans bg-black text-white min-h-screen flex flex-col custom-bg">
+  <body class="font-sans bg-black text-white min-h-screen flex flex-col custom-bg overflow-hidden">
     <!-- Header -->
     <div class="md:px-16 h-[10vh] flex justify-center md:justify-between items-center bg-black py-2 shadow-md shadow-black">
       <a href="/" class="flex items-center gap-2">
@@ -22,7 +22,7 @@
     </div>
 
     <!-- Main -->
-    <main class="w-screen h-[75vh] flex overflow-hidden">
+    <main class="w-screen h-[78vh] flex overflow-hidden">
       <!-- lefty  main sec -->
       <div class="flex-1 w-screen px-10 md:px-20 pt-10 overflow-y-auto scrollbar">
         <h2 class="text-3xl font-bold mb-6">FL Studio Recomposes</h2>
@@ -61,7 +61,7 @@
     </main>
 
     <!-- Bottom Bar -->
-    <div class="absolute h-[15vh] bottom-0 left-0 w-screen bg-black shadow-2xl shadow-black flex items-center justify-between p-3 sm:p-5 pb-6 gap-4">
+    <div class="absolute h-[18vh] bottom-0 left-0 w-screen bg-black shadow-2xl shadow-black flex items-center justify-between p-3 sm:p-5 pb-6 gap-4">
       <div class="flex-1 min-w-0 flex items-center gap-4 sm:cursor-default cursor-pointer active:opacity-80 sm:active:opacity-100" onclick="openMobile()">
         <img id="cover" src="assets/cover/test.png" alt="cover" class="h-16 w-16 rounded-md shrink-0" />
         <div class="overflow-hidden w-32 sm:w-64">

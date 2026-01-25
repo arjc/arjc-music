@@ -144,7 +144,7 @@ function renderLibrary() {
       </div>
       <div class="text-sm font-semibold truncate" title="${s.name}">${s.name}</div>
       <div class="text-xs text-gray-400 truncate mt-1">${s.artist}</div>
-      ${i === currentIndex ? '<span class="inline-block mt-2 px-2 py-1 bg-white text-black text-[11px] font-bold rounded">NOW PLAYING</span>' : ''}
+      ${i === currentIndex ? '<span class="inline-block mt-2 px-2 py-1 bg-white text-black text-[11px] font-bold rounded">ON TRACK</span>' : ''}
     </div>
   `).join("");
 }
