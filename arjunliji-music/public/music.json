@@ -1,0 +1,62 @@
+{
+  "format": "arjctab",
+  "version": 1,
+  "table": {
+    "slug": "music"
+  },
+  "columns": [
+    {
+      "key": "alias",
+      "name": "alias",
+      "type": "text",
+      "required": true
+    },
+    {
+      "key": "title",
+      "name": "title",
+      "type": "text",
+      "required": false
+    },
+    {
+      "key": "artist",
+      "name": "artist",
+      "type": "text",
+      "required": false
+    },
+    {
+      "key": "date",
+      "name": "date",
+      "type": "date",
+      "required": false
+    },
+    {
+      "key": "desc_lyrics",
+      "name": "desc_lyrics",
+      "type": "longtext",
+      "required": false
+    }
+  ],
+  "records": [
+    {
+      "alias": "superman",
+      "title": "Doberman - Remake of Superman by Eminem",
+      "artist": "Arjun Liji",
+      "date": "2024-02-20",
+      "desc_lyrics": "This was me practicing my guitar for the first time on fl studio. I tried to make it sound as close as possible to the real one, but didnt knew much about music theory at that time..."
+    },
+    {
+      "alias": "sreehari",
+      "title": "Sreehari - A parody of Urvasi Ft. Sreehari",
+      "artist": "Arjun Liji",
+      "date": "2024-04-25",
+      "desc_lyrics": "Sreehari, A parody of Urvasi by AR Rahuman.\nMade in FL Studio.\nThis has nothing to do with my friend Sreehari who is a hot individual who gets laid very often...\n\n[Lyrics]\n\nഓ! ഹരീ, ഓ! ഹരീ --\nTake it easy Sreehari...\nപന്ത് പോലെ വയറ് ഉള്ള-\nകിടുക്കൻ ചെറുക്കൻ ശ്രീഹരി!\n\nഓ! ഹരീ, ഓ! ഹരീ --\nTake it easy Sreehari...\nപന്ത് പോലെ വയറ് ഉള്ള-\nകിടുക്കൻ ചെറുക്കൻ ശ്രീഹരി!\n\nകാഴ്ച്ചയിൽ, പ്രശ്നം ആ...\n(Hes so naughty sreehari)\nകൈ വിടാതെ കാത്തുകൊള്ളും-\n(അവനാ നമ്മുടെ ശ്രീഹരി)\n\nകാണും നീ ഹരിയെ ഹരിയെ,\nവയറ് നിറച്ചവനങ്ങ് തിന്നും!\nപിന്നെയാ വഴിയെ വഴിയെ,\nകഴിക്കാൻ ഒന്നും കിട്ടില്ല മോനേ!\n\nഅവനതും തിന്നു തീർക്കും!\n(Hes so naughty sreehari)\nഅവനെപ്പോലെ ആരുമില്ല!\n(അവനാ നമ്മുടെ ശ്രീഹരി)\n\nഓ! ഹരീ, ഓ! ഹരീ --\nTake it easy Sreehari..."
+    },
+    {
+      "alias": "together",
+      "title": "Better off together - Remake of Better of alone",
+      "artist": "Arjun Liji",
+      "date": "2024-02-20",
+      "desc_lyrics": "My first try on recreation of a song using FL studio.\nOriginal song: Better of alone"
+    }
+  ]
+}
